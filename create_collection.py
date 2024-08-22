@@ -1,9 +1,6 @@
 from dotenv import load_dotenv
-from langchain_community.vectorstores import Qdrant
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 import qdrant_client
 import os
-
 import qdrant_client.models
 
 load_dotenv()
