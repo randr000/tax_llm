@@ -14,7 +14,6 @@ def get_pdf_text(pdf):
     return text
 
 if __name__ == "__main__":
-    text = ''
     with open(PDF_FILE_NAME, 'rb') as pdf:
         text = get_pdf_text(pdf)
     with open(TXT_FILE_NAME, 'w') as txt:

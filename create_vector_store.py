@@ -8,19 +8,20 @@ load_dotenv()
 QDRANT_API_KEY = os.getenv('QDRANT_API_KEY')
 QDRANT_HOST = f"{os.getenv('QDRANT_HOST')}/"
 QDRANT_COLLECTION_NAME = os.getenv('QDRANT_COLLECTION_NAME')
+TXT_FILE_NAME=os.getenv('TXT_FILE_NAME')
 
 embeddings = HuggingFaceInstructEmbeddings(model_name='hkunlp/instructor-xl')
 
 # create vector store
 
 vector_store = QdrantVectorStore.from_existing_collection(
-    embeddings=embeddings,
+    embedding=embeddings,
     collection_name=QDRANT_COLLECTION_NAME,
     url=QDRANT_HOST,
-    api_key=QDRANT_API_KEY
+    api_key=QDRANT_API_KEY,
 )
 
-def get_chucks(text):
+def get_chunks(text):
     text_splitter = CharacterTextSplitter(
         separator='\n',
         chunk_size=1000,
@@ -30,3 +31,10 @@ def get_chucks(text):
 
     chunks = text_splitter.split_text(text)
     return chunks
+
+with open(TXT_FILE_NAME, 'r') as f:
+    raw_text = f.read()
+
+texts = get_chunks(raw_text)
+
+vector_store.add_texts(texts)
