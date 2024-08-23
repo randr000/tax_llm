@@ -33,24 +33,28 @@ def get_vector_store():
 
     return vector_store
 
-qa = RetrievalQA.from_chain_type(
-    llm = HuggingFaceEndpoint(
-        repo_id='mistralai/Mistral-7B-Instruct-v0.2',
-        max_length=128,
-        temperature=0.5,
-        huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
-    ),
-    chain_type='stuff',
-    retriever=get_vector_store().as_retriever()
-)
+def retrieve():
+    qa = RetrievalQA.from_chain_type(
+        llm = HuggingFaceEndpoint(
+            repo_id='mistralai/Mistral-7B-Instruct-v0.2',
+            max_length=128,
+            temperature=0.5,
+            huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
+        ),
+        chain_type='stuff',
+        retriever=get_vector_store().as_retriever()
+    )
 
-# query = "I am not married and have no children. What filing status should I use?"
-# print(qa.run(query))
+    return qa
+
+def chat(qa, query):
+    return qa.run(query)
 
 if __name__ == '__main__':
+    qa = retrieve()
     print("Let's chat! Type 'quit' to exit")
     while True:
         query = input('You: ')
         if query == 'quit':
             break
-        print(f'Bot: {qa.run(query)}')
+        print(f'Bot: {chat(qa, query)}')
