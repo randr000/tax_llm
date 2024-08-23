@@ -4,10 +4,9 @@ import qdrant_client
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain.chains.retrieval_qa.base import RetrievalQA
-
-from langchain.llms.huggingface_hub import HuggingFaceHub
 from langchain.llms.huggingface_endpoint import HuggingFaceEndpoint
 
+load_dotenv()
 QDRANT_API_KEY = os.getenv('QDRANT_API_KEY')
 QDRANT_HOST = f"{os.getenv('QDRANT_HOST')}/"
 QDRANT_COLLECTION_NAME = os.getenv('QDRANT_COLLECTION_NAME')
@@ -35,11 +34,6 @@ def get_vector_store():
     return vector_store
 
 qa = RetrievalQA.from_chain_type(
-    # llm = HuggingFaceHub(
-    #     repo_id='google/flan-t5-xxl',
-    #     huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
-    #     model_kwargs={'temperature': .5, 'max_length': 512}
-    #     ),
     llm = HuggingFaceEndpoint(
         repo_id='mistralai/Mistral-7B-Instruct-v0.2',
         max_length=128,
