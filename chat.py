@@ -44,5 +44,13 @@ qa = RetrievalQA.from_chain_type(
     retriever=get_vector_store().as_retriever()
 )
 
-query = "I am not married and have no children. What filing status should I use?"
-print(qa.run(query))
+# query = "I am not married and have no children. What filing status should I use?"
+# print(qa.run(query))
+
+if __name__ == '__main__':
+    print("Let's chat! Type 'quit' to exit")
+    while True:
+        query = input('You: ')
+        if query == 'quit':
+            break
+        print(qa.run(query))
