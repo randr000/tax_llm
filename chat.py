@@ -53,4 +53,4 @@ if __name__ == '__main__':
         query = input('You: ')
         if query == 'quit':
             break
-        print(qa.run(query))
+        print(f'Bot: {qa.run(query)}')
