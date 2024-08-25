@@ -2,3 +2,4 @@ env/
 p17.pdf
 p17.txt
 .env
+__pychache__/
