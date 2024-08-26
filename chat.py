@@ -17,7 +17,7 @@ def get_vector_store():
 
     client = qdrant_client.QdrantClient(
         url=QDRANT_HOST,
-        api_key=QDRANT_API_KEY
+        # api_key=QDRANT_API_KEY
     )
 
     embeddings = HuggingFaceInstructEmbeddings(model_name='hkunlp/instructor-xl')
@@ -28,7 +28,7 @@ def get_vector_store():
         embedding=embeddings,
         collection_name=QDRANT_COLLECTION_NAME,
         url=QDRANT_HOST,
-        api_key=QDRANT_API_KEY,
+        # api_key=QDRANT_API_KEY,
     )
 
     return vector_store

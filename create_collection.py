@@ -12,7 +12,7 @@ QDRANT_COLLECTION_NAME = os.getenv('QDRANT_COLLECTION_NAME')
 
 client = qdrant_client.QdrantClient(
     url=QDRANT_HOST,
-    api_key=QDRANT_API_KEY
+    # api_key=QDRANT_API_KEY
 )
 
 # create collection

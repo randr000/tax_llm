@@ -18,7 +18,7 @@ vector_store = QdrantVectorStore.from_existing_collection(
     embedding=embeddings,
     collection_name=QDRANT_COLLECTION_NAME,
     url=QDRANT_HOST,
-    api_key=QDRANT_API_KEY,
+    # api_key=QDRANT_API_KEY,
 )
 
 def get_chunks(text):
