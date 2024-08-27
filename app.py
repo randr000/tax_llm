@@ -37,4 +37,4 @@ async def chat_with_doc(query: Query) -> Query:
     }
 
 if __name__ == '__main__':
-    uvicorn.run('app:app', host=UVICORN_HOST, port=UVICORN_PORT)
+    uvicorn.run('app:app', host=UVICORN_HOST, port=int(UVICORN_PORT))
