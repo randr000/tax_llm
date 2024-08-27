@@ -26,3 +26,5 @@ pdf_to_txt.py
 create_collection.py
 create_vector_store.py
 start_uvicorn_server.sh
+Dockerfile
+.dockerignore
