@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 import os
-import qdrant_client
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain.chains.retrieval_qa.base import RetrievalQA
@@ -13,17 +12,10 @@ QDRANT_COLLECTION_NAME = os.getenv('QDRANT_COLLECTION_NAME')
 HUGGINGFACEHUB_API_TOKEN = os.getenv('HUGGINGFACEHUB_API_TOKEN')
 
 def get_vector_store():
-    # create a qdrant client
-
-    client = qdrant_client.QdrantClient(
-        url=QDRANT_HOST,
-        # api_key=QDRANT_API_KEY
-    )
 
     embeddings = HuggingFaceInstructEmbeddings(model_name='hkunlp/instructor-xl')
 
     # create vector store
-
     vector_store = QdrantVectorStore.from_existing_collection(
         embedding=embeddings,
         collection_name=QDRANT_COLLECTION_NAME,
