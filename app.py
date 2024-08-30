@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=['*']
 )
 
-qa = retrieve()
+app.state.qa = retrieve()
 
 class Query(BaseModel):
     query: str
@@ -33,7 +33,7 @@ class Query(BaseModel):
 async def chat_with_doc(query: Query) -> Query:
     return {
         'query': query.query,
-        'response': chat(qa, query.query)
+        'response': chat(app.state.qa, query.query)
     }
 
 if __name__ == '__main__':
