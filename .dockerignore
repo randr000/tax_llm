@@ -28,3 +28,4 @@ create_vector_store.py
 start_uvicorn_server.sh
 Dockerfile
 .dockerignore
+README.md
