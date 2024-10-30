@@ -21,7 +21,7 @@ pip install requirements.txt
 
 You then need a vector database. You can use Qdrant. Here are the [instructions](https://qdrant.tech/documentation/guides/installation/#docker) to install locally using Docker.
 
-Make a copy of sample.env and fill in environment variables:
+Copy sample.env:
 ```bash
 cp sample.env .env
 ```
