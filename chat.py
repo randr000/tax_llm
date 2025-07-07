@@ -10,6 +10,8 @@ QDRANT_API_KEY = os.getenv('QDRANT_API_KEY')
 QDRANT_HOST = f"{os.getenv('QDRANT_HOST')}/"
 QDRANT_COLLECTION_NAME = os.getenv('QDRANT_COLLECTION_NAME')
 HUGGINGFACEHUB_API_TOKEN = os.getenv('HUGGINGFACEHUB_API_TOKEN')
+HUGGINGFACE_REPO_ID = os.getenv('HUGGINGFACE_REPO_ID')
+
 
 def get_vector_store():
 
@@ -28,7 +30,7 @@ def get_vector_store():
 def retrieve():
     qa = RetrievalQA.from_chain_type(
         llm = HuggingFaceEndpoint(
-            repo_id='mistralai/Mistral-7B-Instruct-v0.2',
+            repo_id=HUGGINGFACE_REPO_ID,
             max_length=128,
             temperature=0.5,
             huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
