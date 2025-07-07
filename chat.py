@@ -3,7 +3,8 @@ import os
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain.chains.retrieval_qa.base import RetrievalQA
-from langchain.llms.huggingface_endpoint import HuggingFaceEndpoint
+from langchain.chat_models import ChatOllama
+
 
 load_dotenv()
 QDRANT_API_KEY = os.getenv('QDRANT_API_KEY')
@@ -29,12 +30,10 @@ def get_vector_store():
 
 def retrieve():
     qa = RetrievalQA.from_chain_type(
-        llm = HuggingFaceEndpoint(
-            repo_id=HUGGINGFACE_REPO_ID,
-            max_length=128,
-            temperature=0.5,
-            huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
-        ),
+        llm = ChatOllama(
+            base_url=HUGGINGFACE_REPO_ID,
+            model='mistral:latest'
+            ),
         chain_type='stuff',
         retriever=get_vector_store().as_retriever()
     )
