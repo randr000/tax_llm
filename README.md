@@ -33,7 +33,7 @@ QDRANT_COLLECTION_NAME=<Name of vector store collection, can be whatever you lik
 PDF_FILE_NAME=<Name of PDF file of source document, can leave blank if no PDF>
 TXT_FILE_NAME=<Name of >
 HUGGINGFACEHUB_API_TOKEN=<Obtain API key from https://huggingface.co/>
-HUBBIGFACE_REPO_ID=<insert repo id from huggingface>
+HUGGINGFACE_REPO_ID=<insert repo id from huggingface>
 UVICORN_HOST=<IP address to bind to uvicorn socket, default: 127.0.0.1>
 UVICORN_PORT=<Port to bind to uvicorn socket, default: 8000>
 ```
